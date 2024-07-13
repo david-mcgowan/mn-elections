@@ -9,7 +9,6 @@ options(repos = "https://cran.rstudio.com/", type = "binary")
 library(tidyverse)
 library(readxl)
 # library(shiny)
-# library(shinydashboard)
 library(sf)
 library(leaflet)
 library(RColorBrewer)
@@ -49,7 +48,7 @@ precincts <- read_xlsx("2022-general-federal-state-results-by-precinct-official.
 # fixing up tibble
 precincts <- precincts %>%
   rename_all(.funs = str_to_lower) %>% # lowercase col names
-  select(-c(countycode, ctycomdist, juddist, swcdist, # remove useless cols
+  select(-c(countycode, ctycomdist, juddist, swcdist, # remove unnecessary cols
             ward, hospdist, parkdist, tabmodel,
             mailballot, reg7am, edr, signatures,
             ab_mb, fedonlyab, totvoting)) %>%

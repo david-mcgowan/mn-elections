@@ -1,0 +1,765 @@
+<metadata xml:lang="en">
+	<Esri>
+		<CreaDate>20170824</CreaDate>
+		<CreaTime>16232300</CreaTime>
+		<ArcGISFormat>1.0</ArcGISFormat>
+		<ArcGISstyle>FGDC CSDGM Metadata</ArcGISstyle>
+		<SyncOnce>FALSE</SyncOnce>
+		<DataProperties>
+			<itemProps>
+				<itemName Sync="TRUE">general_election_results_by_precinct_2012</itemName>
+				<imsContentType Sync="TRUE">002</imsContentType>
+				<itemLocation>
+					<linkage Sync="TRUE">file://\\g46palgdrftp001\Z\var\ftp\gdrs_temp\update\us_mn_state_sos\bdry_electionresults_2012_2020\shp\general_election_results_by_precinct_2012.shp</linkage>
+					<protocol Sync="TRUE">Local Area Network</protocol>
+				</itemLocation>
+				<itemSize Sync="TRUE">0.000</itemSize>
+			</itemProps>
+			<coordRef>
+				<type Sync="TRUE">Projected</type>
+				<geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn>
+				<csUnits Sync="TRUE">Linear Unit: Meter (1.000000)</csUnits>
+				<projcsn Sync="TRUE">NAD_1983_UTM_Zone_15N</projcsn>
+				<peXml Sync="TRUE">&lt;ProjectedCoordinateSystem xsi:type='typens:ProjectedCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.4'&gt;&lt;WKT&gt;PROJCS[&amp;quot;NAD_1983_UTM_Zone_15N&amp;quot;,GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433]],PROJECTION[&amp;quot;Transverse_Mercator&amp;quot;],PARAMETER[&amp;quot;False_Easting&amp;quot;,500000.0],PARAMETER[&amp;quot;False_Northing&amp;quot;,0.0],PARAMETER[&amp;quot;Central_Meridian&amp;quot;,-93.0],PARAMETER[&amp;quot;Scale_Factor&amp;quot;,0.9996],PARAMETER[&amp;quot;Latitude_Of_Origin&amp;quot;,0.0],UNIT[&amp;quot;Meter&amp;quot;,1.0],AUTHORITY[&amp;quot;EPSG&amp;quot;,26915]]&lt;/WKT&gt;&lt;XOrigin&gt;-5120900&lt;/XOrigin&gt;&lt;YOrigin&gt;-9998100&lt;/YOrigin&gt;&lt;XYScale&gt;450445547.3910538&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;0.001&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;WKID&gt;26915&lt;/WKID&gt;&lt;LatestWKID&gt;26915&lt;/LatestWKID&gt;&lt;/ProjectedCoordinateSystem&gt;</peXml>
+			</coordRef>
+			<lineage>
+				<Process ToolSource="C:\program files\arcgis\server\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20210128" Time="000734">FeatureClassToFeatureClass /var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012 /var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\shp general_election_results_by_precinct_2012.shp # "VTD "VTD" true true false 10 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,VTD,-1,-1;PCTNAME "PCTNAME" true true false 40 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,PCTNAME,-1,-1;PCTCODE "PCTCODE" true true false 5 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,PCTCODE,-1,-1;SHORTLABEL "SHORTLABEL" true true false 25 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,SHORTLABEL,-1,-1;MCDNAME "MCDNAME" true true false 40 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MCDNAME,-1,-1;MCDCODE "MCDCODE" true true false 3 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MCDCODE,-1,-1;MCDFIPS "MCDFIPS" true true false 5 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MCDFIPS,-1,-1;MCDGNIS "MCDGNIS" true true false 8 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MCDGNIS,-1,-1;CTU_TYPE "CTU_TYPE" true true false 25 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,CTU_TYPE,-1,-1;COUNTYNAME "COUNTYNAME" true true false 25 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,COUNTYNAME,-1,-1;COUNTYCODE "COUNTYCODE" true true false 2 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,COUNTYCODE,-1,-1;COUNTYFIPS "COUNTYFIPS" true true false 3 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,COUNTYFIPS,-1,-1;CONGDIST "CONGDIST" true true false 2 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,CONGDIST,-1,-1;MNSENDIST "MNSENDIST" true true false 2 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNSENDIST,-1,-1;MNLEGDIST "MNLEGDIST" true true false 3 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNLEGDIST,-1,-1;CTYCOMDIST "CTYCOMDIST" true true false 3 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,CTYCOMDIST,-1,-1;JUDDIST "JUDDIST" true true false 3 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,JUDDIST,-1,-1;SWCDIST "SWCDIST" true true false 4 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,SWCDIST,-1,-1;SWCDIST_N "SWCDIST_N" true true false 25 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,SWCDIST_N,-1,-1;WARD "WARD" true true false 4 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,WARD,-1,-1;HOSPDIST "HOSPDIST" true true false 5 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,HOSPDIST,-1,-1;HOSPDIST_N "HOSPDIST_N" true true false 30 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,HOSPDIST_N,-1,-1;PARKDIST "PARKDIST" true true false 1 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,PARKDIST,-1,-1;PARKDIST_N "PARKDIST_N" true true false 40 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,PARKDIST_N,-1,-1;TABSYSTEM "TABSYSTEM" true true false 20 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,TABSYSTEM,-1,-1;TABMODEL "TABMODEL" true true false 25 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,TABMODEL,-1,-1;MAILBALLOT "MAILBALLOT" true true false 3 Text 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MAILBALLOT,-1,-1;REG7AM "REG7AM" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,REG7AM,-1,-1;SIGNATURES "SIGNATURES" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,SIGNATURES,-1,-1;EDR "EDR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,EDR,-1,-1;REGMILOVAB "REGMILOVAB" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,REGMILOVAB,-1,-1;FEDONLYAB "FEDONLYAB" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,FEDONLYAB,-1,-1;PRESONLYAB "PRESONLYAB" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,PRESONLYAB,-1,-1;TOTVOTING "TOTVOTING" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,TOTVOTING,-1,-1;USPRSR "USPRSR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSR,-1,-1;USPRSDFL "USPRSDFL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSDFL,-1,-1;USPRSLIB "USPRSLIB" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSLIB,-1,-1;USPRSSWP "USPRSSWP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSSWP,-1,-1;USPRSCP "USPRSCP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSCP,-1,-1;USPRSCG "USPRSCG" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSCG,-1,-1;USPRSGP "USPRSGP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSGP,-1,-1;USPRSGR "USPRSGR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSGR,-1,-1;USPRSSL "USPRSSL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSSL,-1,-1;USPRSJP "USPRSJP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSJP,-1,-1;USPRSWI "USPRSWI" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSWI,-1,-1;USPRSTOTAL "USPRSTOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USPRSTOTAL,-1,-1;USSENIP "USSENIP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENIP,-1,-1;USSENR "USSENR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENR,-1,-1;USSENDFL "USSENDFL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENDFL,-1,-1;USSENGR "USSENGR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENGR,-1,-1;USSENMOP "USSENMOP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENMOP,-1,-1;USSENWI "USSENWI" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENWI,-1,-1;USSENTOTAL "USSENTOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USSENTOTAL,-1,-1;USREPIP "USREPIP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USREPIP,-1,-1;USREPR "USREPR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USREPR,-1,-1;USREPDFL "USREPDFL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USREPDFL,-1,-1;USREPWI "USREPWI" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USREPWI,-1,-1;USREPTOTAL "USREPTOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,USREPTOTAL,-1,-1;MNSENIP "MNSENIP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNSENIP,-1,-1;MNSENR "MNSENR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNSENR,-1,-1;MNSENDFL "MNSENDFL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNSENDFL,-1,-1;MNSENWI "MNSENWI" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNSENWI,-1,-1;MNSENTOTAL "MNSENTOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNSENTOTAL,-1,-1;MNLEGIP "MNLEGIP" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNLEGIP,-1,-1;MNLEGR "MNLEGR" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNLEGR,-1,-1;MNLEGDFL "MNLEGDFL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNLEGDFL,-1,-1;MNLEGWI "MNLEGWI" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNLEGWI,-1,-1;MNLEGTOTAL "MNLEGTOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNLEGTOTAL,-1,-1;MNCA1YES "MNCA1YES" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA1YES,-1,-1;MNCA1NO "MNCA1NO" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA1NO,-1,-1;MNCA1EST "MNCA1EST" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA1EST,-1,-1;MNCA1TOTAL "MNCA1TOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA1TOTAL,-1,-1;MNCA2YES "MNCA2YES" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA2YES,-1,-1;MNCA2NO "MNCA2NO" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA2NO,-1,-1;MNCA2EST "MNCA2EST" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA2EST,-1,-1;MNCA2TOTAL "MNCA2TOTAL" true true false 4 Long 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,MNCA2TOTAL,-1,-1;Shape_Leng "Shape_Leng" false true true 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,Shape_Length,-1,-1;Shape_Area "Shape_Area" false true true 8 Double 0 0 ,First,#,/var/ftp/gdrs_temp/update\us_mn_state_sos\bdry_electionresults_2012_2020\fgdb\General-Election-Results-2012-2020.gdb\general_election_results_by_precinct_2012,Shape_Area,-1,-1" #</Process>
+			</lineage>
+		</DataProperties>
+		<SyncDate>20210128</SyncDate>
+		<SyncTime>00073300</SyncTime>
+		<ModDate>20210128</ModDate>
+		<ModTime>00073300</ModTime>
+	</Esri>
+	<dataIdInfo>
+		<envirDesc Sync="TRUE">Microsoft Windows XP Professional x64 Edition Version 5.2 (Build 3790) Service Pack 2; Esri ArcGIS 10.4.1.5686</envirDesc>
+		<dataLang>
+			<languageCode value="en" Sync="TRUE"/>
+			<countryCode value="US" Sync="TRUE"/>
+		</dataLang>
+		<idCitation>
+			<resTitle Sync="TRUE">general_election_results_by_precinct_2012</resTitle>
+			<presForm>
+				<PresFormCd value="005" Sync="TRUE"/>
+			</presForm>
+		</idCitation>
+		<spatRpType>
+			<SpatRepTypCd value="001" Sync="TRUE"/>
+		</spatRpType>
+	</dataIdInfo>
+	<mdLang>
+		<languageCode value="en" Sync="TRUE"/>
+		<countryCode value="US" Sync="TRUE"/>
+	</mdLang>
+	<distInfo>
+		<distFormat>
+			<formatName Sync="TRUE">Shapefile</formatName>
+		</distFormat>
+		<distTranOps>
+			<transSize Sync="TRUE">0.000</transSize>
+		</distTranOps>
+	</distInfo>
+	<mdHrLv>
+		<ScopeCd value="005" Sync="TRUE"/>
+	</mdHrLv>
+	<mdHrLvName Sync="TRUE">dataset</mdHrLvName>
+	<refSysInfo>
+		<RefSystem>
+			<refSysID>
+				<identCode code="26915" Sync="TRUE"/>
+				<idCodeSpace Sync="TRUE">EPSG</idCodeSpace>
+				<idVersion Sync="TRUE">6.13(3.0.1)</idVersion>
+			</refSysID>
+		</RefSystem>
+	</refSysInfo>
+	<spatRepInfo>
+		<VectSpatRep>
+			<geometObjs Name="general_election_results_by_precinct_2012">
+				<geoObjTyp>
+					<GeoObjTypCd value="002" Sync="TRUE"/>
+				</geoObjTyp>
+				<geoObjCnt Sync="TRUE">0</geoObjCnt>
+			</geometObjs>
+			<topLvl>
+				<TopoLevCd value="001" Sync="TRUE"/>
+			</topLvl>
+		</VectSpatRep>
+	</spatRepInfo>
+	<spdoinfo>
+		<ptvctinf>
+			<esriterm Name="general_election_results_by_precinct_2012">
+				<efeatyp Sync="TRUE">Simple</efeatyp>
+				<efeageom code="4" Sync="TRUE"/>
+				<esritopo Sync="TRUE">FALSE</esritopo>
+				<efeacnt Sync="TRUE">0</efeacnt>
+				<spindex Sync="TRUE">FALSE</spindex>
+				<linrefer Sync="TRUE">FALSE</linrefer>
+			</esriterm>
+		</ptvctinf>
+	</spdoinfo>
+	<eainfo>
+		<detailed Name="general_election_results_by_precinct_2012">
+			<enttyp>
+				<enttypl Sync="TRUE">general_election_results_by_precinct_2012</enttypl>
+				<enttypt Sync="TRUE">Feature Class</enttypt>
+				<enttypc Sync="TRUE">0</enttypc>
+			</enttyp>
+			<attr>
+				<attrlabl Sync="TRUE">FID</attrlabl>
+				<attalias Sync="TRUE">FID</attalias>
+				<attrtype Sync="TRUE">OID</attrtype>
+				<attwidth Sync="TRUE">4</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Internal feature number.</attrdef>
+				<attrdefs Sync="TRUE">Esri</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">Shape</attrlabl>
+				<attalias Sync="TRUE">Shape</attalias>
+				<attrtype Sync="TRUE">Geometry</attrtype>
+				<attwidth Sync="TRUE">0</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Feature geometry.</attrdef>
+				<attrdefs Sync="TRUE">Esri</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Coordinates defining the features.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">VTD</attrlabl>
+				<attalias Sync="TRUE">VTD</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">PCTNAME</attrlabl>
+				<attalias Sync="TRUE">PCTNAME</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">40</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">PCTCODE</attrlabl>
+				<attalias Sync="TRUE">PCTCODE</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">5</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">SHORTLABEL</attrlabl>
+				<attalias Sync="TRUE">SHORTLABEL</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">25</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MCDNAME</attrlabl>
+				<attalias Sync="TRUE">MCDNAME</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">40</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MCDCODE</attrlabl>
+				<attalias Sync="TRUE">MCDCODE</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">3</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MCDFIPS</attrlabl>
+				<attalias Sync="TRUE">MCDFIPS</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">5</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MCDGNIS</attrlabl>
+				<attalias Sync="TRUE">MCDGNIS</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">8</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">CTU_TYPE</attrlabl>
+				<attalias Sync="TRUE">CTU_TYPE</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">25</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">COUNTYNAME</attrlabl>
+				<attalias Sync="TRUE">COUNTYNAME</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">25</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">COUNTYCODE</attrlabl>
+				<attalias Sync="TRUE">COUNTYCODE</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">2</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">COUNTYFIPS</attrlabl>
+				<attalias Sync="TRUE">COUNTYFIPS</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">3</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">CONGDIST</attrlabl>
+				<attalias Sync="TRUE">CONGDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">2</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNSENDIST</attrlabl>
+				<attalias Sync="TRUE">MNSENDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">2</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNLEGDIST</attrlabl>
+				<attalias Sync="TRUE">MNLEGDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">3</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">CTYCOMDIST</attrlabl>
+				<attalias Sync="TRUE">CTYCOMDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">3</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">JUDDIST</attrlabl>
+				<attalias Sync="TRUE">JUDDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">3</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">SWCDIST</attrlabl>
+				<attalias Sync="TRUE">SWCDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">4</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">SWCDIST_N</attrlabl>
+				<attalias Sync="TRUE">SWCDIST_N</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">25</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">WARD</attrlabl>
+				<attalias Sync="TRUE">WARD</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">4</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">HOSPDIST</attrlabl>
+				<attalias Sync="TRUE">HOSPDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">5</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">HOSPDIST_N</attrlabl>
+				<attalias Sync="TRUE">HOSPDIST_N</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">30</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">PARKDIST</attrlabl>
+				<attalias Sync="TRUE">PARKDIST</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">1</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">PARKDIST_N</attrlabl>
+				<attalias Sync="TRUE">PARKDIST_N</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">40</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">TABSYSTEM</attrlabl>
+				<attalias Sync="TRUE">TABSYSTEM</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">20</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">TABMODEL</attrlabl>
+				<attalias Sync="TRUE">TABMODEL</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">25</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MAILBALLOT</attrlabl>
+				<attalias Sync="TRUE">MAILBALLOT</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">3</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">REG7AM</attrlabl>
+				<attalias Sync="TRUE">REG7AM</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">SIGNATURES</attrlabl>
+				<attalias Sync="TRUE">SIGNATURES</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">EDR</attrlabl>
+				<attalias Sync="TRUE">EDR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">REGMILOVAB</attrlabl>
+				<attalias Sync="TRUE">REGMILOVAB</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">FEDONLYAB</attrlabl>
+				<attalias Sync="TRUE">FEDONLYAB</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">PRESONLYAB</attrlabl>
+				<attalias Sync="TRUE">PRESONLYAB</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">TOTVOTING</attrlabl>
+				<attalias Sync="TRUE">TOTVOTING</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSR</attrlabl>
+				<attalias Sync="TRUE">USPRSR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSDFL</attrlabl>
+				<attalias Sync="TRUE">USPRSDFL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSLIB</attrlabl>
+				<attalias Sync="TRUE">USPRSLIB</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSSWP</attrlabl>
+				<attalias Sync="TRUE">USPRSSWP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSCP</attrlabl>
+				<attalias Sync="TRUE">USPRSCP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSCG</attrlabl>
+				<attalias Sync="TRUE">USPRSCG</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSGP</attrlabl>
+				<attalias Sync="TRUE">USPRSGP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSGR</attrlabl>
+				<attalias Sync="TRUE">USPRSGR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSSL</attrlabl>
+				<attalias Sync="TRUE">USPRSSL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSJP</attrlabl>
+				<attalias Sync="TRUE">USPRSJP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSWI</attrlabl>
+				<attalias Sync="TRUE">USPRSWI</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USPRSTOTAL</attrlabl>
+				<attalias Sync="TRUE">USPRSTOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENIP</attrlabl>
+				<attalias Sync="TRUE">USSENIP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENR</attrlabl>
+				<attalias Sync="TRUE">USSENR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENDFL</attrlabl>
+				<attalias Sync="TRUE">USSENDFL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENGR</attrlabl>
+				<attalias Sync="TRUE">USSENGR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENMOP</attrlabl>
+				<attalias Sync="TRUE">USSENMOP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENWI</attrlabl>
+				<attalias Sync="TRUE">USSENWI</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USSENTOTAL</attrlabl>
+				<attalias Sync="TRUE">USSENTOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USREPIP</attrlabl>
+				<attalias Sync="TRUE">USREPIP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USREPR</attrlabl>
+				<attalias Sync="TRUE">USREPR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USREPDFL</attrlabl>
+				<attalias Sync="TRUE">USREPDFL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USREPWI</attrlabl>
+				<attalias Sync="TRUE">USREPWI</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">USREPTOTAL</attrlabl>
+				<attalias Sync="TRUE">USREPTOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNSENIP</attrlabl>
+				<attalias Sync="TRUE">MNSENIP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNSENR</attrlabl>
+				<attalias Sync="TRUE">MNSENR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNSENDFL</attrlabl>
+				<attalias Sync="TRUE">MNSENDFL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNSENWI</attrlabl>
+				<attalias Sync="TRUE">MNSENWI</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNSENTOTAL</attrlabl>
+				<attalias Sync="TRUE">MNSENTOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNLEGIP</attrlabl>
+				<attalias Sync="TRUE">MNLEGIP</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNLEGR</attrlabl>
+				<attalias Sync="TRUE">MNLEGR</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNLEGDFL</attrlabl>
+				<attalias Sync="TRUE">MNLEGDFL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNLEGWI</attrlabl>
+				<attalias Sync="TRUE">MNLEGWI</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNLEGTOTAL</attrlabl>
+				<attalias Sync="TRUE">MNLEGTOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA1YES</attrlabl>
+				<attalias Sync="TRUE">MNCA1YES</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA1NO</attrlabl>
+				<attalias Sync="TRUE">MNCA1NO</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA1EST</attrlabl>
+				<attalias Sync="TRUE">MNCA1EST</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA1TOTAL</attrlabl>
+				<attalias Sync="TRUE">MNCA1TOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA2YES</attrlabl>
+				<attalias Sync="TRUE">MNCA2YES</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA2NO</attrlabl>
+				<attalias Sync="TRUE">MNCA2NO</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA2EST</attrlabl>
+				<attalias Sync="TRUE">MNCA2EST</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">MNCA2TOTAL</attrlabl>
+				<attalias Sync="TRUE">MNCA2TOTAL</attalias>
+				<attrtype Sync="TRUE">Integer</attrtype>
+				<attwidth Sync="TRUE">10</attwidth>
+				<atprecis Sync="TRUE">10</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">Shape_Leng</attrlabl>
+				<attalias Sync="TRUE">Shape_Leng</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">Shape_Area</attrlabl>
+				<attalias Sync="TRUE">Shape_Area</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef>
+				<attrdefs Sync="TRUE">Esri</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Positive real numbers that are automatically generated.</udom>
+				</attrdomv>
+			</attr>
+		</detailed>
+	</eainfo>
+	<mdDateSt Sync="TRUE">20210128</mdDateSt>
+</metadata>
