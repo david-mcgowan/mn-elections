@@ -636,9 +636,9 @@ counties <- st_read("County Shapefiles/mn_county_boundaries.shp") %>%
 # we're leaving out the "metro only" feature of the old app
 #  (I just don't think it's useful enough to port over)
 
-# TODO: deal with candidates for every race
+# TODO: deal with candidates for every race------------------------------
 
-# code for district lookup here
+# code for district lookup here-----------------------------------
 
 # code for statewide table-------------------------------------------------
 
@@ -681,43 +681,43 @@ statewide_map_precincts.fcn <- function(office, year) {
   
   if(office == "President") {
     map_data <- map_data %>%
-      select(countyname, abs_pres_margin, pres_winner, pres_label) %>%
+      select(pctname, abs_pres_margin, pres_winner, pres_label) %>%
       rename(abs_margin = abs_pres_margin,
              winner = pres_winner,
              label = pres_label)
   } else if(office == "U.S. Senate") {
     map_data <- map_data %>%
-      select(countyname, abs_sen_margin, sen_winner, sen_label) %>%
+      select(pctname, abs_sen_margin, sen_winner, sen_label) %>%
       rename(abs_margin = abs_sen_margin,
              winner = sen_winner,
              label = sen_label)
   } else if(office == "U.S. Senate (special)") {
     map_data <- map_data %>%
-      select(countyname, abs_sen_spec_margin, sen_spec_winner, sen_spec_label) %>%
+      select(pctname, abs_sen_spec_margin, sen_spec_winner, sen_spec_label) %>%
       rename(abs_margin = abs_sen_spec_margin,
              winner = sen_spec_winner,
              label = sen_spec_label)
   } else if(office == "Governor") {
     map_data <- map_data %>%
-      select(countyname, abs_gov_margin, gov_winner, gov_label) %>%
+      select(pctname, abs_gov_margin, gov_winner, gov_label) %>%
       rename(abs_margin = abs_gov_margin,
              winner = gov_winner,
              label = gov_label)
   } else if(office == "Secretary of State") {
     map_data <- map_data %>%
-      select(countyname, abs_sos_margin, sos_winner, sos_label) %>%
+      select(pctname, abs_sos_margin, sos_winner, sos_label) %>%
       rename(abs_margin = abs_sos_margin,
              winner = sos_winner,
              label = sos_label)
   } else if(office == "State Auditor") {
     map_data <- map_data %>%
-      select(countyname, abs_aud_margin, aud_winner, aud_label) %>%
+      select(pctname, abs_aud_margin, aud_winner, aud_label) %>%
       rename(abs_margin = abs_aud_margin,
              winner = aud_winner,
              label = aud_label)
   } else if(office == "Attorney General") {
     map_data <- map_data %>%
-      select(countyname, abs_ag_margin, ag_winner, ag_label) %>%
+      select(pctname, abs_ag_margin, ag_winner, ag_label) %>%
       rename(abs_margin = abs_ag_margin,
              winner = ag_winner,
              label = ag_label)
@@ -873,8 +873,8 @@ county_map_data <- all_results %>%
                            " (",
                            other_pct_sen,
                            "%)"),
-         sen_spec_label = str_c("Precinct: ",
-                                pctname,
+         sen_spec_label = str_c(countyname,
+                                " County",
                                 "<br/>",
                                 "DFL: ",
                                 usssedfl,
@@ -1065,7 +1065,26 @@ congressional_table.fcn <- function(district, year) {
     row_spec(rowtotal, bold = TRUE) # bolding row for total votes
 }
 
-# code for congressional map here
+# code for congressional map-------------------------------------------
+
+congressional_map.fcn <- function(district, year) {
+  
+  map_data <- results_with_pcts %>%
+    filter(Year == year,
+           congdist == district) %>%
+    select(pctname, abs_congress_margin, congress_winner, congress_label) %>%
+    rename(abs_margin = abs_congress_margin,
+           winner = congress_winner,
+           label = congress_label)
+  
+  congressional_leaflet <- map_data %>%
+    leaflet() %>%
+    addProviderTiles("CartoDB.Positron")
+  
+  congressional_leaflet <- add_party_polygons(congressional_leaflet, map_data)
+  
+  return(congressional_leaflet)
+}
 
 # code for state senate table-------------------------------------------------
 
@@ -1096,7 +1115,26 @@ mnsen_table.fcn <- function(district, year) {
     row_spec(rowtotal, bold = TRUE) # bolding row for total votes
 }
 
-# code for state senate map here
+# code for state senate map--------------------------------------------
+
+mn_senate_map.fcn <- function(district, year) {
+  
+  map_data <- results_with_pcts %>%
+    filter(Year == year,
+           mnsendist == district) %>%
+    select(pctname, abs_mnsen_margin, mnsen_winner, mnsen_label) %>%
+    rename(abs_margin = abs_mnsen_margin,
+           winner = mnsen_winner,
+           label = mnsen_label)
+  
+  mn_senate_leaflet <- map_data %>%
+    leaflet() %>%
+    addProviderTiles("CartoDB.Positron")
+  
+  mn_senate_leaflet <- add_party_polygons(mn_senate_leaflet, map_data)
+  
+  return(mn_senate_leaflet)
+}
 
 # code for state house table------------------------------------------------
 
@@ -1127,4 +1165,23 @@ mnhouse_table.fcn <- function(district, year) {
     row_spec(rowtotal, bold = TRUE) # bolding row for total votes
 }
 
-# code for state house map here
+# code for state house map----------------------------------------------
+
+mn_house_map.fcn <- function(district, year) {
+  
+  map_data <- results_with_pcts %>%
+    filter(Year == year,
+           mnlegdist == district) %>%
+    select(pctname, abs_mnhouse_margin, mnhouse_winner, mnhouse_label) %>%
+    rename(abs_margin = abs_mnhouse_margin,
+           winner = mnhouse_winner,
+           label = mnhouse_label)
+  
+  mn_house_leaflet <- map_data %>%
+    leaflet() %>%
+    addProviderTiles("CartoDB.Positron")
+  
+  mn_house_leaflet <- add_party_polygons(mn_house_leaflet, map_data)
+  
+  return(mn_house_leaflet)
+}
