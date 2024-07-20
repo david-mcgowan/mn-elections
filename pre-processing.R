@@ -80,7 +80,7 @@ add_party_polygons <- function(leaf, df) {
 results_2012 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2012.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
-                totvoting, starts_with("usprs"), starts_with("ussen"),
+                starts_with("usprs"), starts_with("ussen"),
                 starts_with("usrep"), starts_with("mnsen"),
                 starts_with("mnleg"), geometry) %>%
   mutate(Year = 2012) %>%
@@ -89,7 +89,7 @@ results_2012 <- st_read("Precinct Shapefiles/2010 Census/general_election_result
 results_2014 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2014.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
-                totvoting, starts_with("ussen"), starts_with("usrep"),
+                starts_with("ussen"), starts_with("usrep"),
                 starts_with("mnleg"), starts_with("mngov"),
                 starts_with("mnsos"), starts_with("mnaud"),
                 starts_with("mnag"), geometry) %>%
@@ -99,7 +99,7 @@ results_2014 <- st_read("Precinct Shapefiles/2010 Census/general_election_result
 results_2016 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2016.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
-                totvoting, starts_with("usprs"), starts_with("usrep"),
+                starts_with("usprs"), starts_with("usrep"),
                 starts_with("mnsen"), starts_with("mnleg"), geometry) %>%
   mutate(Year = 2016) %>%
   st_transform(crs = 4326)
@@ -107,7 +107,7 @@ results_2016 <- st_read("Precinct Shapefiles/2010 Census/general_election_result
 results_2018 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2018.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
-                totvoting, starts_with("ussen"), starts_with("ussse"),
+                starts_with("ussen"), starts_with("ussse"),
                 starts_with("usrep"), starts_with("mnsen"),
                 starts_with("mnleg"), starts_with("mngov"),
                 starts_with("mnsos"), starts_with("mnaud"),
@@ -118,7 +118,7 @@ results_2018 <- st_read("Precinct Shapefiles/2010 Census/general_election_result
 results_2020 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2020.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
-                totvoting, starts_with("usprs"), starts_with("ussen"),
+                starts_with("usprs"), starts_with("ussen"),
                 starts_with("usrep"), starts_with("mnsen"),
                 starts_with("mnleg"), geometry) %>%
   # rename cols to match other datasets
@@ -131,7 +131,7 @@ results_2020 <- st_read("Precinct Shapefiles/2010 Census/general_election_result
 results_2022 <- st_read("Precinct Shapefiles/2020 Census/general_election_results_by_precinct_2022.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
-                totvoting, starts_with("usrep"), starts_with("mnsen"),
+                starts_with("usrep"), starts_with("mnsen"),
                 starts_with("mnleg"), starts_with("mngov"),
                 starts_with("mnsos"), starts_with("mnaud"),
                 starts_with("mnag"), geometry) %>%
@@ -165,8 +165,7 @@ statewide_totals <- all_results %>%
                             str_detect(Category, "mnag") ~ "Attorney General",
                             str_detect(Category, "mnaud") ~ "State Auditor",
                             str_detect(Category, "mngov") ~ "Governor",
-                            str_detect(Category, "mnsos") ~ "Secretary of State",
-                            Category == "totvoting" ~ "Total Votes"),
+                            str_detect(Category, "mnsos") ~ "Secretary of State"),
          Party = case_when(str_detect(Category, "total$") ~ "Total",
                            str_detect(Category, "dfl$") ~ "DFL",
                            str_detect(Category, "lib$") ~ "Libertarian",
@@ -189,13 +188,11 @@ statewide_totals <- all_results %>%
                            str_detect(Category, "lp$") ~ "Libertarian",
                            str_detect(Category, "ua$") ~ "Independent (Jerry Trooien)",
                            str_detect(Category, "sl$") ~ "Socialism and Liberation",
-                           str_detect(Category, "r$") ~ "Republican",
-                           Category == "totvoting" ~ "Total")) %>%
+                           str_detect(Category, "r$") ~ "Republican")) %>%
   dplyr::select(-Category)
 
 totals_per_office <- statewide_totals %>%
-  filter(Office != "Total Votes",
-         Party == "Total") %>%
+  filter(Party == "Total") %>%
   select(Year, Office,
          Total = Votes) %>%
   filter(Total > 0)
@@ -203,13 +200,13 @@ totals_per_office <- statewide_totals %>%
 statewide_totals <- statewide_totals %>%
   left_join(totals_per_office,
             by = c("Year", "Office")) %>%
-  filter(!(is.na(Total) & Office != "Total Votes")) %>% # remove offices in cycles where they weren't on the ballot
+  filter(!is.na(Total)) %>% # remove offices in cycles where they weren't on the ballot
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
 # get congressional results for congressional table
 congressional_totals <- all_results %>%
-  dplyr::select(Year, congdist, totvoting, starts_with("usrep")) %>%
+  dplyr::select(Year, congdist, starts_with("usrep")) %>%
   as_tibble() %>% # remove spatial structure
   group_by(Year, congdist) %>%
   summarize(across(where(is.numeric),
@@ -224,15 +221,12 @@ congressional_totals <- all_results %>%
                            str_detect(Category, "lmn$") ~ "Legal Marijuana Now",
                            str_detect(Category, "glc$") ~ "Grassroots - Legalize Cannabis",
                            str_detect(Category, "wi$") ~ "Write-in",
-                           str_detect(Category, "r$") ~ "Republican",
-                           Category == "totvoting" ~ "Total"),
-         total_flag = (Category == "totvoting")) %>%
+                           str_detect(Category, "r$") ~ "Republican")) %>%
   rename(District = congdist) %>%
   dplyr::select(-Category)
 
 totals_per_congdist <- congressional_totals %>%
-  filter(total_flag == FALSE,
-         Party == "Total") %>%
+  filter(Party == "Total") %>%
   select(Year, District,
          Total = Votes) %>%
   filter(Total > 0)
@@ -240,15 +234,12 @@ totals_per_congdist <- congressional_totals %>%
 congressional_totals <- congressional_totals %>%
   left_join(totals_per_congdist,
             by = c("Year", "District")) %>%
-  mutate(Total = ifelse(total_flag == TRUE,
-                        NA,
-                        Total)) %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
 # get state senate results for state senate table
 mnsen_totals <- all_results %>%
-  dplyr::select(Year, mnsendist, totvoting, starts_with("mnsen")) %>%
+  dplyr::select(Year, mnsendist, starts_with("mnsen")) %>%
   as_tibble() %>% # remove spatial structure
   group_by(Year, mnsendist) %>%
   summarize(across(where(is.numeric),
@@ -263,15 +254,12 @@ mnsen_totals <- all_results %>%
                            str_detect(Category, "lmn$") ~ "Legal Marijuana Now",
                            str_detect(Category, "glc$") ~ "Grassroots - Legalize Cannabis",
                            str_detect(Category, "wi$") ~ "Write-in",
-                           str_detect(Category, "r$") ~ "Republican",
-                           Category == "totvoting" ~ "Total"),
-         total_flag = (Category == "totvoting")) %>%
+                           str_detect(Category, "r$") ~ "Republican")) %>%
   rename(District = mnsendist) %>%
   dplyr::select(-Category)
 
 totals_per_sendist <- mnsen_totals %>%
-  filter(total_flag == FALSE,
-         Party == "Total") %>%
+  filter(Party == "Total") %>%
   select(Year, District,
          Total = Votes) %>%
   filter(Total > 0)
@@ -279,15 +267,12 @@ totals_per_sendist <- mnsen_totals %>%
 mnsen_totals <- mnsen_totals %>%
   left_join(totals_per_sendist,
             by = c("Year", "District")) %>%
-  mutate(Total = ifelse(total_flag == TRUE,
-                        NA,
-                        Total)) %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
 # get state house results for state house table
 mnhouse_totals <- all_results %>%
-  dplyr::select(Year, mnlegdist, totvoting, starts_with("mnleg")) %>%
+  dplyr::select(Year, mnlegdist, starts_with("mnleg")) %>%
   as_tibble() %>% # remove spatial structure
   group_by(Year, mnlegdist) %>%
   summarize(across(where(is.numeric),
@@ -302,15 +287,12 @@ mnhouse_totals <- all_results %>%
                            str_detect(Category, "lmn$") ~ "Legal Marijuana Now",
                            str_detect(Category, "glc$") ~ "Grassroots - Legalize Cannabis",
                            str_detect(Category, "wi$") ~ "Write-in",
-                           str_detect(Category, "r$") ~ "Republican",
-                           Category == "totvoting" ~ "Total"),
-         total_flag = (Category == "totvoting")) %>%
+                           str_detect(Category, "r$") ~ "Republican")) %>%
   rename(District = mnlegdist) %>%
   dplyr::select(-Category)
 
 totals_per_legdist <- mnhouse_totals %>%
-  filter(total_flag == FALSE,
-         Party == "Total") %>%
+  filter(Party == "Total") %>%
   select(Year, District,
          Total = Votes) %>%
   filter(Total > 0)
@@ -318,9 +300,6 @@ totals_per_legdist <- mnhouse_totals %>%
 mnhouse_totals <- mnhouse_totals %>%
   left_join(totals_per_legdist,
             by = c("Year", "District")) %>%
-  mutate(Total = ifelse(total_flag == TRUE,
-                        NA,
-                        Total)) %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
@@ -666,7 +645,7 @@ statewide_table.fcn <- function(office, year) {
   table_data <- statewide_totals %>%
     filter(Office == office,
            Year == year) %>%
-    select(-c(Office, Year)) %>%
+    select(Party, Votes, Percentage) %>%
     arrange(desc(Percentage)) %>%
     arrange(Percentage == 100) %>% # move total votes to bottom of the table
     mutate(Votes = formatC(Votes, # formatting large numbers
@@ -1058,12 +1037,93 @@ statewide_map_counties.fcn <- function(office, year) {
 
 # code for congressional table here
 
+congressional_table.fcn <- function(district, year) {
+  table_data <- congressional_totals %>%
+    filter(District == district,
+           Year == year) %>%
+    select(Party, Votes, Percentage) %>%
+    arrange(desc(Percentage)) %>%
+    arrange(Percentage == 100) %>% # move total votes to bottom of the table
+    mutate(Votes = formatC(Votes, # formatting large numbers
+                           format = "d",
+                           big.mark = ","),
+           Percentage = str_c(as.character(Percentage),
+                              "%"))
+  
+  rowtotal <- nrow(table_data)
+  
+  kbl(table_data,
+      format = "html",
+      booktabs = TRUE,
+      caption = str_c("Votes by Party for District ",
+                      district,
+                      " in ",
+                      year),
+      align = "l") %>%
+    kable_styling() %>%
+    row_spec(rowtotal, bold = TRUE) # bolding row for total votes
+}
+
 # code for congressional map here
 
 # code for state senate table here
 
+mnsen_table.fcn <- function(district, year) {
+  table_data <- mnsen_totals %>%
+    filter(District == district,
+           Year == year) %>%
+    select(Party, Votes, Percentage) %>%
+    arrange(desc(Percentage)) %>%
+    arrange(Percentage == 100) %>% # move total votes to bottom of the table
+    mutate(Votes = formatC(Votes, # formatting large numbers
+                           format = "d",
+                           big.mark = ","),
+           Percentage = str_c(as.character(Percentage),
+                              "%"))
+  
+  rowtotal <- nrow(table_data)
+  
+  kbl(table_data,
+      format = "html",
+      booktabs = TRUE,
+      caption = str_c("Votes by Party for District ",
+                      district,
+                      " in ",
+                      year),
+      align = "l") %>%
+    kable_styling() %>%
+    row_spec(rowtotal, bold = TRUE) # bolding row for total votes
+}
+
 # code for state senate map here
 
 # code for state house table here
+
+mnhouse_table.fcn <- function(district, year) {
+  table_data <- mnhouse_totals %>%
+    filter(District == district,
+           Year == year) %>%
+    select(Party, Votes, Percentage) %>%
+    arrange(desc(Percentage)) %>%
+    arrange(Percentage == 100) %>% # move total votes to bottom of the table
+    mutate(Votes = formatC(Votes, # formatting large numbers
+                           format = "d",
+                           big.mark = ","),
+           Percentage = str_c(as.character(Percentage),
+                              "%"))
+  
+  rowtotal <- nrow(table_data)
+  
+  kbl(table_data,
+      format = "html",
+      booktabs = TRUE,
+      caption = str_c("Votes by Party for District ",
+                      district,
+                      " in ",
+                      year),
+      align = "l") %>%
+    kable_styling() %>%
+    row_spec(rowtotal, bold = TRUE) # bolding row for total votes
+}
 
 # code for state house map here
