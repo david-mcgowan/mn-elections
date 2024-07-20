@@ -77,6 +77,7 @@ add_party_polygons <- function(leaf, df) {
   }
 }
 
+# read in data-------------------------------------------------------------
 results_2012 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2012.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
@@ -146,7 +147,7 @@ all_results <- bind_rows(results_2012, results_2014,
 rm(results_2012, results_2014, results_2016,
    results_2018, results_2020, results_2022)
 
-# get statewide totals for statewide table
+# get statewide totals for statewide table----------------------------------
 statewide_totals <- all_results %>%
   dplyr::select(-c(congdist, mnsendist, geometry), # remove numeric vars
                 -starts_with("usrep"),
@@ -204,7 +205,7 @@ statewide_totals <- statewide_totals %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
-# get congressional results for congressional table
+# get congressional results for congressional table--------------------------
 congressional_totals <- all_results %>%
   dplyr::select(Year, congdist, starts_with("usrep")) %>%
   as_tibble() %>% # remove spatial structure
@@ -237,7 +238,7 @@ congressional_totals <- congressional_totals %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
-# get state senate results for state senate table
+# get state senate results for state senate table-----------------------------
 mnsen_totals <- all_results %>%
   dplyr::select(Year, mnsendist, starts_with("mnsen")) %>%
   as_tibble() %>% # remove spatial structure
@@ -270,7 +271,7 @@ mnsen_totals <- mnsen_totals %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
-# get state house results for state house table
+# get state house results for state house table-------------------------------
 mnhouse_totals <- all_results %>%
   dplyr::select(Year, mnlegdist, starts_with("mnleg")) %>%
   as_tibble() %>% # remove spatial structure
@@ -303,7 +304,7 @@ mnhouse_totals <- mnhouse_totals %>%
   filter(Votes > 0) %>% # remove parties that weren't running for an office
   mutate(Percentage = round(100 * Votes / Total, digits = 2))
 
-# get percentages and labels for each race at each precinct
+# get percentages and labels for each race at each precinct-------------------
 results_with_pcts <- all_results %>%
   mutate(r_pct_pres = round(100 * (usprsr / usprstotal),
                             digits = 2),
@@ -317,12 +318,12 @@ results_with_pcts <- all_results %>%
                              digits = 2),
          other_pct_sen = round(100 - (r_pct_sen + dfl_pct_sen),
                                digits = 2),
-         # r_pct_sen_spec = round(100 * (ussser / usssetotal),
-         #                        digits = 2),
-         # dfl_pct_sen_spec = round(100 * (usssedfl / usssetotal),
-         #                          digits = 2),
-         # other_pct_sen_spec = round(100 - (r_pct_sen_spec + dfl_pct_sen_spec),
-         #                            digits = 2),
+         r_pct_sen_spec = round(100 * (ussser / usssetotal),
+                                digits = 2),
+         dfl_pct_sen_spec = round(100 * (usssedfl / usssetotal),
+                                  digits = 2),
+         other_pct_sen_spec = round(100 - (r_pct_sen_spec + dfl_pct_sen_spec),
+                                    digits = 2),
          r_pct_gov = round(100 * (mngovr / mngovtotal),
                            digits = 2),
          dfl_pct_gov = round(100 * (mngovdfl / mngovtotal),
@@ -375,7 +376,7 @@ results_with_pcts <- all_results %>%
   # now, we need a margin variable for the plot
   mutate(pres_margin = dfl_pct_pres - r_pct_pres,
          sen_margin = dfl_pct_sen - r_pct_sen,
-         # sen_spec_margin = dfl_pct_sen_spec - r_pct_sen_spec,
+         sen_spec_margin = dfl_pct_sen_spec - r_pct_sen_spec,
          gov_margin = dfl_pct_gov - r_pct_gov,
          sos_margin = dfl_pct_sos - r_pct_sos,
          aud_margin = dfl_pct_aud - r_pct_aud,
@@ -391,9 +392,9 @@ results_with_pcts <- all_results %>%
          sen_winner = case_when(sen_margin > 0 ~ "DFL",
                                 sen_margin < 0 ~ "Republican",
                                 sen_margin == 0 ~ "Tie"),
-         # sen_spec_winner = case_when(sen_spec_margin > 0 ~ "DFL",
-         #                             sen_spec_margin < 0 ~ "Republican",
-         #                             sen_spec_margin == 0 ~ "Tie"),
+         sen_spec_winner = case_when(sen_spec_margin > 0 ~ "DFL",
+                                     sen_spec_margin < 0 ~ "Republican",
+                                     sen_spec_margin == 0 ~ "Tie"),
          gov_winner = case_when(gov_margin > 0 ~ "DFL",
                                 gov_margin < 0 ~ "Republican",
                                 gov_margin == 0 ~ "Tie"),
@@ -419,7 +420,7 @@ results_with_pcts <- all_results %>%
          # converting margin to absolute value
          abs_pres_margin = abs(pres_margin),
          abs_sen_margin = abs(sen_margin),
-         # abs_sen_spec_margin = abs(sen_spec_margin),
+         abs_sen_spec_margin = abs(sen_spec_margin),
          abs_gov_margin = abs(gov_margin),
          abs_sos_margin = abs(sos_margin),
          abs_aud_margin = abs(aud_margin),
@@ -468,26 +469,26 @@ results_with_pcts <- all_results %>%
                            " (",
                            other_pct_sen,
                            "%)"),
-         # sen_spec_label = str_c("Precinct: ",
-         #                        pctname,
-         #                        "<br/>",
-         #                        "DFL: ",
-         #                        usssedfl,
-         #                        " (",
-         #                        dfl_pct_sen_spec,
-         #                        "%)",
-         #                        "<br/>",
-         #                        "Republican: ",
-         #                        ussser,
-         #                        " (",
-         #                        r_pct_sen_spec,
-         #                        "%)",
-         #                        "<br/>",
-         #                        "Other: ",
-         #                        usssetotal - (usssedfl + ussser),
-         #                        " (",
-         #                        other_pct_sen_spec,
-         #                        "%)"),
+         sen_spec_label = str_c("Precinct: ",
+                                pctname,
+                                "<br/>",
+                                "DFL: ",
+                                usssedfl,
+                                " (",
+                                dfl_pct_sen_spec,
+                                "%)",
+                                "<br/>",
+                                "Republican: ",
+                                ussser,
+                                " (",
+                                r_pct_sen_spec,
+                                "%)",
+                                "<br/>",
+                                "Other: ",
+                                usssetotal - (usssedfl + ussser),
+                                " (",
+                                other_pct_sen_spec,
+                                "%)"),
          gov_label = str_c("Precinct: ",
                            pctname,
                            "<br/>",
@@ -639,7 +640,7 @@ counties <- st_read("County Shapefiles/mn_county_boundaries.shp") %>%
 
 # code for district lookup here
 
-# code for statewide table here
+# code for statewide table-------------------------------------------------
 
 statewide_table.fcn <- function(office, year) {
   table_data <- statewide_totals %>%
@@ -668,7 +669,7 @@ statewide_table.fcn <- function(office, year) {
     row_spec(rowtotal, bold = TRUE) # bolding row for total votes
 }
 
-# code for statewide precinct map here
+# code for statewide precinct map--------------------------------------------
 
 statewide_map_precincts.fcn <- function(office, year) {
   # if(office %notin% c("Governor", "Secretary of State", "State Auditor", "Attorney General")) {
@@ -732,7 +733,7 @@ statewide_map_precincts.fcn <- function(office, year) {
   return(statewide_leaflet)
 }
 
-# code for statewide county map here
+# code for statewide county map---------------------------------------------
 
 county_map_data <- all_results %>%
   dplyr::select(-geometry) %>%
@@ -760,12 +761,12 @@ county_map_data <- all_results %>%
                              digits = 2),
          other_pct_sen = round(100 - (r_pct_sen + dfl_pct_sen),
                                digits = 2),
-         # r_pct_sen_spec = round(100 * (ussser / usssetotal),
-         #                        digits = 2),
-         # dfl_pct_sen_spec = round(100 * (usssedfl / usssetotal),
-         #                          digits = 2),
-         # other_pct_sen_spec = round(100 - (r_pct_sen_spec + dfl_pct_sen_spec),
-         #                            digits = 2),
+         r_pct_sen_spec = round(100 * (ussser / usssetotal),
+                                digits = 2),
+         dfl_pct_sen_spec = round(100 * (usssedfl / usssetotal),
+                                  digits = 2),
+         other_pct_sen_spec = round(100 - (r_pct_sen_spec + dfl_pct_sen_spec),
+                                    digits = 2),
          r_pct_gov = round(100 * (mngovr / mngovtotal),
                            digits = 2),
          dfl_pct_gov = round(100 * (mngovdfl / mngovtotal),
@@ -794,7 +795,7 @@ county_map_data <- all_results %>%
   # now, we need a margin variable for the plot
   mutate(pres_margin = dfl_pct_pres - r_pct_pres,
          sen_margin = dfl_pct_sen - r_pct_sen,
-         # sen_spec_margin = dfl_pct_sen_spec - r_pct_sen_spec,
+         sen_spec_margin = dfl_pct_sen_spec - r_pct_sen_spec,
          gov_margin = dfl_pct_gov - r_pct_gov,
          sos_margin = dfl_pct_sos - r_pct_sos,
          aud_margin = dfl_pct_aud - r_pct_aud,
@@ -807,9 +808,9 @@ county_map_data <- all_results %>%
          sen_winner = case_when(sen_margin > 0 ~ "DFL",
                                 sen_margin < 0 ~ "Republican",
                                 sen_margin == 0 ~ "Tie"),
-         # sen_spec_winner = case_when(sen_spec_margin > 0 ~ "DFL",
-         #                             sen_spec_margin < 0 ~ "Republican",
-         #                             sen_spec_margin == 0 ~ "Tie"),
+         sen_spec_winner = case_when(sen_spec_margin > 0 ~ "DFL",
+                                     sen_spec_margin < 0 ~ "Republican",
+                                     sen_spec_margin == 0 ~ "Tie"),
          gov_winner = case_when(gov_margin > 0 ~ "DFL",
                                 gov_margin < 0 ~ "Republican",
                                 gov_margin == 0 ~ "Tie"),
@@ -826,7 +827,7 @@ county_map_data <- all_results %>%
          # converting margin to absolute value
          abs_pres_margin = abs(pres_margin),
          abs_sen_margin = abs(sen_margin),
-         # abs_sen_spec_margin = abs(sen_spec_margin),
+         abs_sen_spec_margin = abs(sen_spec_margin),
          abs_gov_margin = abs(gov_margin),
          abs_sos_margin = abs(sos_margin),
          abs_aud_margin = abs(aud_margin),
@@ -872,26 +873,26 @@ county_map_data <- all_results %>%
                            " (",
                            other_pct_sen,
                            "%)"),
-         # sen_spec_label = str_c("Precinct: ",
-         #                        pctname,
-         #                        "<br/>",
-         #                        "DFL: ",
-         #                        usssedfl,
-         #                        " (",
-         #                        dfl_pct_sen_spec,
-         #                        "%)",
-         #                        "<br/>",
-         #                        "Republican: ",
-         #                        ussser,
-         #                        " (",
-         #                        r_pct_sen_spec,
-         #                        "%)",
-         #                        "<br/>",
-         #                        "Other: ",
-         #                        usssetotal - (usssedfl + ussser),
-         #                        " (",
-         #                        other_pct_sen_spec,
-         #                        "%)"),
+         sen_spec_label = str_c("Precinct: ",
+                                pctname,
+                                "<br/>",
+                                "DFL: ",
+                                usssedfl,
+                                " (",
+                                dfl_pct_sen_spec,
+                                "%)",
+                                "<br/>",
+                                "Republican: ",
+                                ussser,
+                                " (",
+                                r_pct_sen_spec,
+                                "%)",
+                                "<br/>",
+                                "Other: ",
+                                usssetotal - (usssedfl + ussser),
+                                " (",
+                                other_pct_sen_spec,
+                                "%)"),
          gov_label = str_c(countyname,
                             " County",
                             "<br/>",
@@ -1035,7 +1036,7 @@ statewide_map_counties.fcn <- function(office, year) {
   return(statewide_leaflet)
 }
 
-# code for congressional table here
+# code for congressional table-----------------------------------------------
 
 congressional_table.fcn <- function(district, year) {
   table_data <- congressional_totals %>%
@@ -1066,7 +1067,7 @@ congressional_table.fcn <- function(district, year) {
 
 # code for congressional map here
 
-# code for state senate table here
+# code for state senate table-------------------------------------------------
 
 mnsen_table.fcn <- function(district, year) {
   table_data <- mnsen_totals %>%
@@ -1097,7 +1098,7 @@ mnsen_table.fcn <- function(district, year) {
 
 # code for state senate map here
 
-# code for state house table here
+# code for state house table------------------------------------------------
 
 mnhouse_table.fcn <- function(district, year) {
   table_data <- mnhouse_totals %>%
