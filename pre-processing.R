@@ -77,18 +77,56 @@ add_party_polygons <- function(leaf, df) {
   }
 }
 
+results_2012 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2012.shp") %>%
+  janitor::clean_names() %>%
+  dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
+                totvoting, starts_with("usprs"), starts_with("ussen"),
+                starts_with("usrep"), starts_with("mnsen"),
+                starts_with("mnleg"), geometry) %>%
+  mutate(Year = 2012) %>%
+  st_transform(crs = 4326) # long and lat
+
+results_2014 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2014.shp") %>%
+  janitor::clean_names() %>%
+  dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
+                totvoting, starts_with("ussen"), starts_with("usrep"),
+                starts_with("mnleg"), starts_with("mngov"),
+                starts_with("mnsos"), starts_with("mnaud"),
+                starts_with("mnag"), geometry) %>%
+  mutate(Year = 2014) %>%
+  st_transform(crs = 4326)
+
+results_2016 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2016.shp") %>%
+  janitor::clean_names() %>%
+  dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
+                totvoting, starts_with("usprs"), starts_with("usrep"),
+                starts_with("mnsen"), starts_with("mnleg"), geometry) %>%
+  mutate(Year = 2016) %>%
+  st_transform(crs = 4326)
+
+results_2018 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2018.shp") %>%
+  janitor::clean_names() %>%
+  dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
+                totvoting, starts_with("ussen"), starts_with("ussse"),
+                starts_with("usrep"), starts_with("mnsen"),
+                starts_with("mnleg"), starts_with("mngov"),
+                starts_with("mnsos"), starts_with("mnaud"),
+                starts_with("mnag"), geometry) %>%
+  mutate(Year = 2018) %>%
+  st_transform(crs = 4326)
+
 results_2020 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2020.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
                 totvoting, starts_with("usprs"), starts_with("ussen"),
                 starts_with("usrep"), starts_with("mnsen"),
                 starts_with("mnleg"), geometry) %>%
-  # rename cols to match the newer dataset
+  # rename cols to match other datasets
   rename(usreptotal = usreptot,
          mnlegtotal = mnlegtot,
          mnsentotal = mnsentot) %>%
   mutate(Year = 2020) %>%
-  st_transform(crs = 4326) # long and lat
+  st_transform(crs = 4326)
 
 results_2022 <- st_read("Precinct Shapefiles/2020 Census/general_election_results_by_precinct_2022.shp") %>%
   janitor::clean_names() %>%
@@ -100,7 +138,13 @@ results_2022 <- st_read("Precinct Shapefiles/2020 Census/general_election_result
   mutate(Year = 2022) %>%
   st_transform(crs = 4326)
 
-all_results <- bind_rows(results_2020, results_2022)
+all_results <- bind_rows(results_2012, results_2014,
+                         results_2016, results_2018,
+                         results_2020, results_2022)
+
+# remove single-year datasets from environment
+rm(results_2012, results_2014, results_2016,
+   results_2018, results_2020, results_2022)
 
 # get statewide totals for statewide table
 statewide_totals <- all_results %>%
@@ -126,7 +170,7 @@ statewide_totals <- all_results %>%
          Party = case_when(str_detect(Category, "total$") ~ "Total",
                            str_detect(Category, "dfl$") ~ "DFL",
                            str_detect(Category, "lib$") ~ "Libertarian",
-                           str_detect(Category, "gp$") ~ "Green",
+                           str_detect(Category, "gp$") ~ "Green", # also for mgp$
                            str_detect(Category, "indkw$") ~ "Independent (Kanye West)",
                            str_detect(Category, "indbp$") ~ "Independent (Brock Pierce)",
                            str_detect(Category, "slp$") ~ "Socialism and Liberation",
@@ -135,6 +179,16 @@ statewide_totals <- all_results %>%
                            str_detect(Category, "lmn$") ~ "Legal Marijuana Now",
                            str_detect(Category, "glc$") ~ "Grassroots - Legalize Cannabis",
                            str_detect(Category, "wi$") ~ "Write-in",
+                           str_detect(Category, "cg$") ~ "Constitutional Government",
+                           str_detect(Category, "cp$") ~ "Constitution",
+                           str_detect(Category, "jp$") ~ "Justice",
+                           str_detect(Category, "adp$") ~ "American Delta",
+                           str_detect(Category, "gr$") ~ "Grassroots",
+                           str_detect(Category, "mop$") ~ "Open Progressives",
+                           str_detect(Category, "ip$") ~ "Independence",
+                           str_detect(Category, "lp$") ~ "Libertarian",
+                           str_detect(Category, "ua$") ~ "Independent (Jerry Trooien)",
+                           str_detect(Category, "sl$") ~ "Socialism and Liberation",
                            str_detect(Category, "r$") ~ "Republican",
                            Category == "totvoting" ~ "Total")) %>%
   dplyr::select(-Category)
