@@ -75,6 +75,8 @@ add_party_polygons <- function(leaf, df) {
                   fillColor = "#CCCCCC",
                   fillOpacity = 3)
   }
+  
+  return(leaf)
 }
 
 # read in data-------------------------------------------------------------
