@@ -37,6 +37,46 @@ alphanumeric <- function(vector) {
   return(sorted_vec)
 }
 
+add_party_polygons <- function(leaf, df) {
+  # add any DFL constituencies
+  if(sum(df$winner == "DFL") > 0) {
+    leaf <- leaf %>%
+      addPolygons(data = filter(df,
+                                winner == "DFL"),
+                  label = ~map(label, HTML),
+                  color = "black",
+                  weight = 2,
+                  fillColor = ~colorNumeric("Blues",
+                                            domain = 0:(max(abs_margin) + 10))(abs_margin),
+                  fillOpacity = 3)
+  }
+  
+  # add any Republican constituencies
+  if(sum(df$winner == "Republican") > 0) {
+    leaf <- leaf %>%
+      addPolygons(data = filter(df,
+                                winner == "Republican"),
+                  label = ~map(label, HTML),
+                  color = "black",
+                  weight = 2,
+                  fillColor = ~colorNumeric("Reds",
+                                            domain = 0:(max(abs_margin) + 10))(abs_margin),
+                  fillOpacity = 3)
+  }
+  
+  # add any tied constituencies
+  if(sum(df$winner == "Tie") > 0) {
+    leaf <- leaf %>%
+      addPolygons(data = filter(df,
+                                winner == "Tie"),
+                  label = ~map(label, HTML),
+                  color = "black",
+                  weight = 2,
+                  fillColor = "#CCCCCC",
+                  fillOpacity = 3)
+  }
+}
+
 results_2020 <- st_read("Precinct Shapefiles/2010 Census/general_election_results_by_precinct_2020.shp") %>%
   janitor::clean_names() %>%
   dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
@@ -409,43 +449,8 @@ statewide_map_precincts.fcn <- function(office, year) {
     leaflet() %>%
     addProviderTiles("CartoDB.Positron")
   
-  # add any DFL counties
-  if(sum(map_data$winner == "DFL") > 0) {
-    statewide_leaflet <- statewide_leaflet %>%
-      addPolygons(data = filter(map_data,
-                                winner == "DFL"),
-                  label = ~map(label, HTML),
-                  color = "black",
-                  weight = 2,
-                  fillColor = ~colorNumeric("Blues",
-                                            domain = 0:(max(abs_margin) + 10))(abs_margin),
-                  fillOpacity = 3)
-  }
+  statewide_leaflet <- add_party_polygons(statewide_leaflet, map_data)
   
-  # add any Republican counties
-  if(sum(map_data$winner == "Republican") > 0) {
-    statewide_leaflet <- statewide_leaflet %>%
-      addPolygons(data = filter(map_data,
-                                winner == "Republican"),
-                  label = ~map(label, HTML),
-                  color = "black",
-                  weight = 2,
-                  fillColor = ~colorNumeric("Reds",
-                                            domain = 0:(max(abs_margin) + 10))(abs_margin),
-                  fillOpacity = 3)
-  }
-  
-  # add any tied counties
-  if(sum(map_data$winner == "Tie") > 0) {
-    statewide_leaflet <- statewide_leaflet %>%
-      addPolygons(data = filter(map_data,
-                                winner == "Tie"),
-                  label = ~map(label, HTML),
-                  color = "black",
-                  weight = 2,
-                  fillColor = "#CCCCCC",
-                  fillOpacity = 3)
-  }
   return(statewide_leaflet)
 }
 
@@ -716,43 +721,8 @@ statewide_map_counties.fcn <- function(office, year) {
     leaflet() %>%
     addProviderTiles("CartoDB.Positron")
   
-  # add any DFL counties
-  if(sum(map_data$winner == "DFL") > 0) {
-    statewide_leaflet <- statewide_leaflet %>%
-      addPolygons(data = filter(map_data,
-                                winner == "DFL"),
-                  label = ~map(label, HTML),
-                  color = "black",
-                  weight = 2,
-                  fillColor = ~colorNumeric("Blues",
-                                            domain = 0:(max(abs_margin) + 10))(abs_margin),
-                  fillOpacity = 3)
-  }
+  statewide_leaflet <- add_party_polygons(statewide_leaflet, map_data)
   
-  # add any Republican counties
-  if(sum(map_data$winner == "Republican") > 0) {
-    statewide_leaflet <- statewide_leaflet %>%
-      addPolygons(data = filter(map_data,
-                                winner == "Republican"),
-                  label = ~map(label, HTML),
-                  color = "black",
-                  weight = 2,
-                  fillColor = ~colorNumeric("Reds",
-                                            domain = 0:(max(abs_margin) + 10))(abs_margin),
-                  fillOpacity = 3)
-  }
-  
-  # add any tied counties
-  if(sum(map_data$winner == "Tie") > 0) {
-    statewide_leaflet <- statewide_leaflet %>%
-      addPolygons(data = filter(map_data,
-                                winner == "Tie"),
-                  label = ~map(label, HTML),
-                  color = "black",
-                  weight = 2,
-                  fillColor = "#CCCCCC",
-                  fillOpacity = 3)
-  }
   return(statewide_leaflet)
 }
 
