@@ -758,9 +758,7 @@ results_with_pcts <- all_results %>%
 # we're leaving out the "metro only" feature of the old app
 #  (I just don't think it's useful enough to port over)
 
-# TODO: deal with candidates for every race------------------------------
-
-# code for district lookup here-----------------------------------
+# TODO add code for district lookup-----------------------------------
 
 # code for statewide table-------------------------------------------------
 
@@ -791,71 +789,7 @@ statewide_table.fcn <- function(office, year) {
     row_spec(rowtotal, bold = TRUE) # bolding row for total votes
 }
 
-# code for statewide precinct map--------------------------------------------
-
-statewide_map_precincts.fcn <- function(office, year) {
-  # if(office %notin% c("Governor", "Secretary of State", "State Auditor", "Attorney General")) {
-  #   stop("Oops! That wasn't a statewide election in 2022.")
-  # }
-  
-  map_data <- results_with_pcts %>%
-    filter(Year == year)
-  
-  if(office == "President") {
-    map_data <- map_data %>%
-      select(pctname, abs_pres_margin, pres_winner, pres_label) %>%
-      rename(abs_margin = abs_pres_margin,
-             winner = pres_winner,
-             label = pres_label)
-  } else if(office == "U.S. Senate") {
-    map_data <- map_data %>%
-      select(pctname, abs_sen_margin, sen_winner, sen_label) %>%
-      rename(abs_margin = abs_sen_margin,
-             winner = sen_winner,
-             label = sen_label)
-  } else if(office == "U.S. Senate (special)") {
-    map_data <- map_data %>%
-      select(pctname, abs_sen_spec_margin, sen_spec_winner, sen_spec_label) %>%
-      rename(abs_margin = abs_sen_spec_margin,
-             winner = sen_spec_winner,
-             label = sen_spec_label)
-  } else if(office == "Governor") {
-    map_data <- map_data %>%
-      select(pctname, abs_gov_margin, gov_winner, gov_label) %>%
-      rename(abs_margin = abs_gov_margin,
-             winner = gov_winner,
-             label = gov_label)
-  } else if(office == "Secretary of State") {
-    map_data <- map_data %>%
-      select(pctname, abs_sos_margin, sos_winner, sos_label) %>%
-      rename(abs_margin = abs_sos_margin,
-             winner = sos_winner,
-             label = sos_label)
-  } else if(office == "State Auditor") {
-    map_data <- map_data %>%
-      select(pctname, abs_aud_margin, aud_winner, aud_label) %>%
-      rename(abs_margin = abs_aud_margin,
-             winner = aud_winner,
-             label = aud_label)
-  } else if(office == "Attorney General") {
-    map_data <- map_data %>%
-      select(pctname, abs_ag_margin, ag_winner, ag_label) %>%
-      rename(abs_margin = abs_ag_margin,
-             winner = ag_winner,
-             label = ag_label)
-  }
-  
-  
-  statewide_leaflet <- map_data %>%
-    leaflet() %>%
-    addProviderTiles("CartoDB.Positron")
-  
-  statewide_leaflet <- add_party_polygons(statewide_leaflet, map_data)
-  
-  return(statewide_leaflet)
-}
-
-# code for statewide county map---------------------------------------------
+# prep data for statewide county map---------------------------------------------
 
 county_map_data <- all_results %>%
   dplyr::select(-geometry) %>%
@@ -1096,13 +1030,18 @@ county_map_data <- all_results %>%
                             other_pct_ag,
                             "%)"))
 
-statewide_map_counties.fcn <- function(office, year) {
-  # if(office %notin% c("Governor", "Secretary of State", "State Auditor", "Attorney General")) {
-  #   stop("Oops! That wasn't a statewide election in 2022.")
-  # }
-  
-  map_data <- county_map_data %>%
-    filter(Year == year)
+# code for statewide map---------------------------
+
+statewide_map.fcn <- function(office, year, size) {
+  if(size == "Counties") {
+    map_data <- county_map_data %>%
+      filter(Year == year)
+  } else if(size == "Precincts") {
+    map_data <- results_with_pcts %>%
+      filter(Year == year)
+  } else { # terrible error handling
+    map_data <- tibble()
+  }
   
   if(office == "President") {
     map_data <- map_data %>%
