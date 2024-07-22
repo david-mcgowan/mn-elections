@@ -64,7 +64,7 @@ ui <- navbarPage(
                               em("Election Results in Minnesota"),
                               "app!")),
                     
-                    p("Minnesota has two histories that are both true: a legacy of strong performance by Democrats (or DFLers, for Democrat-Farmer-Labor), and yet a long closely divided electorate. A transformation has taken place since 2012, where rural Minnesotans are much more likely to vote Republicans while the Twin Cities metro shifts ever toward the DFL. In 2022, the most recent election, Minnesotans cast their ballots for hundreds of legislative and executive candidates. This was a consequential election, with the DFL retaining all statewide offices -- and claiming a majority in both chambers of the legislature for the first time in several years."),
+                    p("Minnesota has two histories that are both true: a legacy of strong performance by Democrats (or DFLers, for Democrat-Farmer-Labor), and yet a long closely divided electorate. A transformation has taken place since 2012, where rural Minnesotans are much more likely to vote Republican while the Twin Cities metro shifts ever toward the DFL. In 2022, the most recent election, Minnesotans cast their ballots for hundreds of legislative and executive candidates. This was a consequential election, with the DFL retaining all statewide offices -- and claiming a majority in both chambers of the legislature for the first time in several years."),
                     
                     div(class = "rounded-box-solid",
                         
@@ -150,11 +150,11 @@ ui <- navbarPage(
                
                actionButton("congress_button", label = "Submit"),
                
-               # textInput("congress_city",
-               #           "Search for a specific city:",
-               #           placeholder = "Type a city name..."),
-               # 
-               # textOutput("congress_matches"),
+               textInput("congress_city",
+                         "Search for a specific city:",
+                         placeholder = "Type a city name..."),
+
+               textOutput("congress_matches"),
                
                below = "*(i) denotes incumbent"
              ),
@@ -181,11 +181,11 @@ ui <- navbarPage(
                
                actionButton("senate_button", label = "Submit"),
                
-               # textInput("senate_city",
-               #           "Search for a specific city:",
-               #           placeholder = "Type a city name..."),
-               # 
-               # textOutput("senate_matches"),
+               textInput("senate_city",
+                         "Search for a specific city:",
+                         placeholder = "Type a city name..."),
+
+               textOutput("senate_matches"),
                
                below = "*(i) denotes incumbent"
              ),
@@ -213,11 +213,11 @@ ui <- navbarPage(
                
                actionButton("house_button", label = "Submit"),
                
-               # textInput("house_city",
-               #           "Search for a specific city:",
-               #           placeholder = "Type a city name..."),
-               # 
-               # textOutput("house_matches"),
+               textInput("house_city",
+                         "Search for a specific city:",
+                         placeholder = "Type a city name..."),
+
+               textOutput("house_matches"),
                
                below = "*(i) denotes incumbent"
                
@@ -262,6 +262,13 @@ server <- function(input, output, session) {
     statewide_map.fcn(statewide_office(), statewide_year(), statewide_size())
   )
   
+  observe({
+    updateSelectInput(session, "statewide_year",
+                      choices = unique(pull(filter(statewide_totals,
+                                                   Office == input$statewide_office),
+                                            Year)))
+  })
+  
   # congress
   congress_district <- reactiveVal(1)
   congress_year <- reactiveVal(2022)
@@ -284,9 +291,9 @@ server <- function(input, output, session) {
     congressional_map.fcn(congress_district(), congress_year())
   )
   
-  # output$congress_matches <- renderText({
-  #   congress_match.fcn(input$congress_city)
-  # })
+  output$congress_matches <- renderText({
+    match.fcn(input$congress_city, "Congress", input$congress_year)
+  })
   
   # senate
   senate_district <- reactiveVal(1)
@@ -310,9 +317,9 @@ server <- function(input, output, session) {
     mn_senate_map.fcn(senate_district(), senate_year())
   )
   
-  # output$senate_matches <- renderText({
-  #   senate_match.fcn(input$senate_city)
-  # })
+  output$senate_matches <- renderText({
+    match.fcn(input$senate_city, "State Senate", input$senate_year)
+  })
   
   # house
   house_district <- reactiveVal("1A")
@@ -336,9 +343,9 @@ server <- function(input, output, session) {
     mn_house_map.fcn(house_district(), house_year())
   )
   
-  # output$house_matches <- renderText({
-  #   house_match.fcn(input$house_city)
-  # })
+  output$house_matches <- renderText({
+    match.fcn(input$house_city, "State House", input$house_year)
+  })
 }
 
 shinyApp(ui = ui, server = server)

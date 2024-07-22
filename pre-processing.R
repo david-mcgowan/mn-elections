@@ -758,7 +758,106 @@ results_with_pcts <- all_results %>%
 # we're leaving out the "metro only" feature of the old app
 #  (I just don't think it's useful enough to port over)
 
-# TODO add code for district lookup-----------------------------------
+# code for district lookup-----------------------------------
+
+load_municipalities <- function(filepath) {
+  df <- read_csv(filepath) %>%
+    # remove townships
+    filter(str_detect(mcdname, "City$") == TRUE) %>%
+    # clean up district spelling
+    mutate(district = ifelse(str_detect(district, "^0") == TRUE,
+                             str_sub(district, 2, -1),
+                             district),
+           mcdname = str_remove(mcdname, " City$")) %>%
+    select(mcdname, district) %>%
+    distinct() # remove duplicate rows
+  
+  # account for common spelling variations
+  sts <- df %>%
+    filter(str_detect(mcdname, "Saint")) %>%
+    mutate(mcdname = str_replace(mcdname, "Saint", "St"))
+  
+  st.s <- df %>%
+    filter(str_detect(mcdname, "Saint")) %>%
+    mutate(mcdname = str_replace(mcdname, "Saint", "St."))
+  
+  saints <- df %>%
+    filter(str_detect(mcdname, "St\\.")) %>%
+    mutate(mcdname = str_replace(mcdname, "St\\.", "Saint"))
+  
+  sts_2 <- df %>%
+    filter(str_detect(mcdname, "St\\.")) %>%
+    mutate(mcdname = str_replace(mcdname, "St\\.", "St"))
+  
+  df <- bind_rows(df, sts, st.s, saints, sts_2)
+  
+  return(df)
+}
+
+house_towns_2010s <- load_municipalities("Municipality Files/housemcd-2010s.csv")
+house_towns_2020s <- load_municipalities("Municipality Files/housemcd-2020s.csv")
+senate_towns_2010s <- load_municipalities("Municipality Files/senatemcd-2010s.csv")
+senate_towns_2020s <- load_municipalities("Municipality Files/senatemcd-2020s.csv")
+congress_towns_2010s <- load_municipalities("Municipality Files/congressmcd-2010s.csv")
+congress_towns_2020s <- load_municipalities("Municipality Files/congressmcd-2020s.csv")
+
+match.fcn <- function(city, office, year) {
+  
+  if(office == "State House" & year <= 2020) {
+    df <- house_towns_2010s
+  } else if(office == "State House" & year <= 2030) {
+    df <- house_towns_2020s
+  } else if(office == "State Senate" & year <= 2020) {
+    df <- senate_towns_2010s
+  } else if(office == "State Senate" & year <= 2030) {
+    df <- senate_towns_2020s
+  } else if(office == "Congress" & year <= 2020) {
+    df <- congress_towns_2010s
+  } else if(office == "Congress" & year <= 2030) {
+    df <- congress_towns_2020s
+  }
+  
+  # if input is empty, return empty (for app initialization)
+  if(city == "") {
+    return("")
+  }
+  
+  # find city and grab districts
+  districts <- df %>%
+    filter(mcdname == city) %>%
+    pull(district)
+  
+  if(length(districts) == 0) { # for non-city names
+    string <- str_c("Uh-oh -- I don't have a record of ",
+                    city,
+                    " being a city in Minnesota.")
+  } else if(length(districts) == 1) { # for cities in one district
+    string <- str_c("The city of ",
+                    city,
+                    " is in district ",
+                    districts,
+                    ".")
+  } else if (length(districts) == 2) { # for cities in two districts
+    string <- str_c("The city of ",
+                    city,
+                    " is in districts ",
+                    districts[1],
+                    " and ",
+                    districts[2],
+                    ".")
+  } else { # for cities in 3+ districts
+    n_matches <- length(districts)
+    string <- str_c("The city of ",
+                    city,
+                    " is in districts ",
+                    str_c(districts[1:n_matches-1], collapse = ", "),
+                    ", and ",
+                    districts[n_matches],
+                    ".")
+  }
+  
+  return(string)
+}
 
 # code for statewide table-------------------------------------------------
 
