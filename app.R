@@ -84,7 +84,7 @@ ui <- navbarPage(
                     
                     br(),
                     
-                    p("This app has four tabs: one for statewide elections, another for congressional elections, and two more for state legislative races. Statewide election results can be viewed either by county or by precinct; all other results are at the precinct level. Contact me at dave.s.mcgowan@gmail.com with any suggestions for this app! The code and datasets for this app can be found on GitHub.")
+                    p("This app has four tabs: one for statewide elections, another for congressional elections, and two more for state legislative races. Statewide election results can be viewed either by county or by precinct; all other results are at the precinct level. Contact me at dave.s.mcgowan@gmail.com with any suggestions for this app! The code and datasets for this app can be found on ", a("GitHub", href = "https://github.com/david-mcgowan/mn-elections", .noWS = "after"), ".")
              ),
              
              column(width = 5, class = "custom-column",
