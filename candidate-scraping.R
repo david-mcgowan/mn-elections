@@ -108,6 +108,30 @@ r_tibble <- tibble(Candidate = r_candidates) %>%
 bind_rows(dfl_tibble, r_tibble) %>%
   write_csv("2020-candidates.csv")
 
+# 2024-----------------------------
+
+html_2024 <- read_html("https://ballotpedia.org/Minnesota_House_of_Representatives_elections,_2024")
+dfl_nodes <- html_nodes(html_2024, "td:nth-child(2)")
+dfl_candidates <- html_text(dfl_nodes)
+
+dfl_candidates <- dfl_candidates[73:206] %>%
+  str_trim()
+
+dfl_tibble <- tibble(Candidate = dfl_candidates) %>%
+  districtize()
+
+r_nodes <- html_nodes(html_2024, "td:nth-child(3)")
+r_candidates <- html_text(r_nodes)
+
+r_candidates <- r_candidates[71:204] %>%
+  str_trim()
+
+r_tibble <- tibble(Candidate = r_candidates) %>%
+  districtize()
+
+bind_rows(dfl_tibble, r_tibble) %>%
+  write_csv("2024-candidates.csv")
+
 # 2022 (previous work)---------------------
 
 # house_html <- read_html("https://ballotpedia.org/Minnesota_House_of_Representatives_elections,_2022")
