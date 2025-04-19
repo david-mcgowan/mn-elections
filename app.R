@@ -15,7 +15,7 @@ ui <- navbarPage(
   # title
   p(
     style = "color: white;", # I bet this line could be removed!
-    strong("Election Results in Minnesota (2012-2022)")
+    strong("Election Results in Minnesota (2012-2024)")
   ),
   
   # customizing colors and creating CSS classes
@@ -64,7 +64,7 @@ ui <- navbarPage(
                               em("Election Results in Minnesota"),
                               "app!")),
                     
-                    p("Minnesota has two histories that are both true: a legacy of strong performance by Democrats (or DFLers, for Democrat-Farmer-Labor), and yet a long closely divided electorate. A transformation has taken place since 2012, where rural Minnesotans are much more likely to vote Republican while the Twin Cities metro shifts ever toward the DFL. In 2022, the most recent election, Minnesotans cast their ballots for hundreds of legislative and executive candidates. This was a consequential election, with the DFL retaining all statewide offices -- and claiming a majority in both chambers of the legislature for the first time in several years."),
+                    p("Minnesota has a reputation as a blue state, solidly controlled by Democrats (or DFLers, for Democratic-Farmer-Labor). And it's true that Republicans haven't won a statewide election here since 2006 -- but the performance gap between the two parties has been shrinking in recent years. Rural Minnesotans are much more likely to vote Republican than in the past, while the Twin Cities metro shifts ever toward the DFL. In 2024, the most recent election, Minnesotans cast their ballots for hundreds of legislative and executive candidates. This was a consequential election, with the DFL winning the statewide elections for senator and president -- but Minnesotans elected a tied chamber in the state house for the first time since the 1970s, ending the DFL's single-party governing."),
                     
                     div(class = "rounded-box-solid",
                         
@@ -99,7 +99,7 @@ ui <- navbarPage(
                     div(class = "rounded-box-dashed",
                         
                         p(strong("About:"),
-                          " This app was created by David McGowan, a data scientist with the Federal Reserve Bank of Minneapolis (note: the Fed is not associated with this work). David is a proud alumnus of St. Olaf College (BA '22) with an MS in biostatistics, and he's still an Iowa farmer in spirit. David loves programming in R (when it's going well), and he also enjoys classical singing and 90s movies!")
+                          " This app was created by David McGowan, a data scientist with the Federal Reserve Bank of Minneapolis (note: the Fed is not associated with this work). David is a proud alumnus of St. Olaf College (BA '22) with an MS in biostatistics, and he's still an Iowa farmer in spirit. David loves programming in R (when it's going well), and he also enjoys classical singing, 90s movies, and running! (For exercise, not for office.)")
                     )
              )
            )
@@ -115,8 +115,8 @@ ui <- navbarPage(
                
                selectInput("statewide_year",
                            "Choose a year:",
-                           choices = c(2012, 2014, 2016, 2018, 2020, 2022),
-                           selected = 2022),
+                           choices = c(2012, 2014, 2016, 2018, 2020, 2022, 2024),
+                           selected = 2024),
                
                selectInput("statewide_size",
                            "Counties or precincts?",
@@ -145,8 +145,8 @@ ui <- navbarPage(
                
                selectInput("congress_year",
                            "Choose a year:",
-                           choices = c(2012, 2014, 2016, 2018, 2020, 2022),
-                           selected = 2022),
+                           choices = c(2012, 2014, 2016, 2018, 2020, 2022, 2024),
+                           selected = 2024),
                
                actionButton("congress_button", label = "Submit"),
                
@@ -208,8 +208,8 @@ ui <- navbarPage(
                
                selectInput("house_year",
                            "Choose a year:",
-                           choices = c(2012, 2014, 2016, 2018, 2020, 2022),
-                           selected = 2022),
+                           choices = c(2012, 2014, 2016, 2018, 2020, 2022, 2024),
+                           selected = 2024),
                
                actionButton("house_button", label = "Submit"),
                
@@ -271,7 +271,7 @@ server <- function(input, output, session) {
   
   # congress
   congress_district <- reactiveVal(1)
-  congress_year <- reactiveVal(2022)
+  congress_year <- reactiveVal(2024)
 
   observeEvent(input$congress_button, {
     req(input$congress_district)
@@ -323,7 +323,7 @@ server <- function(input, output, session) {
   
   # house
   house_district <- reactiveVal("1A")
-  house_year <- reactiveVal(2022)
+  house_year <- reactiveVal(2024)
   
   observeEvent(input$house_button, {
     req(input$house_district)
