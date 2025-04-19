@@ -223,26 +223,59 @@ results_2022 <- st_read("Precinct Shapefiles/2020 Census/general_election_result
          mnleglib = ifelse(mnlegdist == "44B", # no Libertarian data for HD44B
                            mnlegtotal - (mnlegdfl + mnlegr + mnlegwi),
                            0)) %>%
+  rename(mnlegia = mnlegip) %>% # match Independence-Alliance to previous custom
+  st_transform(crs = 4326)
+
+results_2024 <- st_read("Precinct Shapefiles/2020 Census/general_election_results_by_precinct_2024.shp") %>%
+  janitor::clean_names() %>%
+  dplyr::select(pctname, countyname, congdist, mnsendist, mnlegdist,
+                starts_with("usprs"), starts_with("ussen"),
+                starts_with("usrep"), starts_with("mnleg"),
+                geometry) %>%
+  mutate(Year = 2024,
+         usrepcc = ifelse(congdist == "2", # no "Constitutional Conservative" data for MN-02
+                          usreptotal - (usrepdfl + usrepr + usrepwi),
+                          0),
+         mnlegfp = ifelse(mnlegdist == "3A", # no Forward party data for HD3A
+                          mnlegtotal - (mnlegdfl + mnlegr + mnlegwi),
+                          0),
+         mnlegip = ifelse(mnlegdist == "21A", # no Independence-Alliance party data for HD21A
+                          mnlegtotal - (mnlegdfl + mnlegr + mnlegwi),
+                          0),
+         mnlegaf = ifelse(mnlegdist == "6B", # no "Americans First" data for HD6B
+                          mnlegtotal - (mnlegdfl + mnlegr + mnlegwi),
+                          0),
+         mnleglib = ifelse(mnlegdist == "44B", # no Libertarian data for HD44B
+                          mnlegtotal - (mnlegdfl + mnlegr + mnlegwi),
+                          0),
+         mnleggp = ifelse(mnlegdist == "61A", # no Green Party data for HD61A
+                          mnlegtotal - (mnlegdfl + mnlegr + mnlegwi),
+                          0)) %>%
+  rename(usprsindsa = usprsind, # specify the independent candidate for president
+         mnlegia = mnlegip, # match Independence-Alliance to previous custom
+         usprsgp = usprsg) %>% # match Green Party to previous data custom
   st_transform(crs = 4326)
 
 all_results <- bind_rows(results_2012, results_2014,
                          results_2016, results_2018,
-                         results_2020, results_2022)
+                         results_2020, results_2022,
+                         results_2024)
 
 # remove single-year datasets from environment
 rm(results_2012, results_2014, results_2016,
-   results_2018, results_2020, results_2022)
+   results_2018, results_2020, results_2022,
+   results_2024)
 
 counties <- st_read("County Shapefiles/mn_county_boundaries.shp") %>%
   st_transform(crs = 4326)
 
-statewide_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2022).xlsx",
+statewide_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2024).xlsx",
                                             sheet = 1)
-congressional_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2022).xlsx",
+congressional_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2024).xlsx",
                                                 sheet = 2)
-mnsen_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2022).xlsx",
+mnsen_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2024).xlsx",
                                         sheet = 3)
-mnhouse_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2022).xlsx",
+mnhouse_candidates <- openxlsx::read.xlsx("Candidate Files/MN candidates (2012-2024).xlsx",
                                           sheet = 4)
 
 # get statewide totals for statewide table----------------------------------
@@ -287,6 +320,9 @@ statewide_totals <- all_results %>%
                            str_detect(Category, "lp$") ~ "Libertarian",
                            str_detect(Category, "ua$") ~ "Independent (Jerry Trooien)",
                            str_detect(Category, "sl$") ~ "Socialism and Liberation",
+                           str_detect(Category, "wtp$") ~ "We The People",
+                           str_detect(Category, "jfa$") ~ "Justice For All",
+                           str_detect(Category, "indsa$") ~ "Independent (Shiva Ayyadurai)",
                            str_detect(Category, "r$") ~ "Republican")) %>%
   dplyr::select(-Category) %>%
   left_join(statewide_candidates,
@@ -322,6 +358,7 @@ congressional_totals <- all_results %>%
                            str_detect(Category, "gp$") ~ "Green",
                            str_detect(Category, "lmn$") ~ "Legal Marijuana Now",
                            str_detect(Category, "glc$") ~ "Grassroots - Legalize Cannabis",
+                           str_detect(Category, "cc$") ~ "Constitutional Conservative",
                            str_detect(Category, "wi$") ~ "Write-in",
                            str_detect(Category, "r$") ~ "Republican")) %>%
   rename(District = congdist) %>%
@@ -411,6 +448,8 @@ mnhouse_totals <- all_results %>%
                            str_detect(Category, "indrk$") ~ "Independent (Roger Kittelson)",
                            str_detect(Category, "oth$") ~ "Other",
                            str_detect(Category, "vp$") ~ "Veterans Party",
+                           str_detect(Category, "fp$") ~ "Forward",
+                           str_detect(Category, "af$") ~ "Americans First",
                            str_detect(Category, "r$") ~ "Republican")) %>%
   rename(District = mnlegdist) %>%
   dplyr::select(-Category) %>%
